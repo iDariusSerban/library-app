@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         Book book1 = new Book("Baltagul", "Mihail Sadoveanu", "13579", 10, 1);
-        Book book2 = new Book("Ion", "Liviu Rebreanu", "65872", 10, 9);
+        Book book2 = new Book("Ion", "Liviu Rebreanu", "65872", 10, 5);
         Book book3 = new Book("Mara", "Ioan Slavici", "32215", 10, 3);
         Book[] bookList = {book1, book2, book3};
         Library library = new Library(bookList);
@@ -15,7 +15,9 @@ public class Main {
             client1.borrowBook("13579");
             client1.borrowBook("13579");
             client1.borrowBook("65872");
-            client1.borrowBook("65872");
+
+            client1.returnBook("65872");
+            client1.returnBook("65872");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

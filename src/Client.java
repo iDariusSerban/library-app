@@ -51,8 +51,30 @@ public class Client extends User {
         throw new Exception("Nu mai sunt exemplare de imprumutat");
     }
 
-    public boolean returnBook(String ISBNCode) {
-        return false;
+    public boolean returnBook(String ISBNCode) throws Exception {
+        // varific sa fie cartea din lista bibliotecii
+        Book book = getLibrary().searchForBook(ISBNCode);
+        if (book != null) {
+            //sterg codul din lista clientului
+            for (int i = 0; i < numberOfBorrowedBooks; i++) {
+                if (ISBNCode.equals(borrowedBookCodes[i])) {
+                    if (i < numberOfBorrowedBooks - 1) {
+                        for (int k = i; k < numberOfBorrowedBooks - 1; k++) {
+                            borrowedBookCodes[k] = borrowedBookCodes[k + 1];
+                        }
+                        numberOfBorrowedBooks--;
+                    } else {
+                        borrowedBookCodes[i] = null;
+                        numberOfBorrowedBooks--;
+                    }
+                }
+
+            }
+        }
+        //scad numarul de copii imprumutate ale carti din lista librariei
+        book.setBorrowedNumberOfCopies(book.getBorrowedNumberOfCopies() - 1);
+        return true;
     }
+
 
 }

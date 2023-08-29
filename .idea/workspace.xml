@@ -55,7 +55,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1693244767332</updated>
-      <workItem from="1693244768489" duration="10317000" />
+      <workItem from="1693244768489" duration="14331000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -73,7 +73,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693292470383</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="functia borrowBook pt Client testata">
+      <option name="closed" value="true" />
+      <created>1693301388823</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1693301388823</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -82,6 +90,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
     <MESSAGE value="Am pus atributele si metodele da baza in toate clasele + isBookAvailable si viewAvailableBooks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Am pus atributele si metodele da baza in toate clasele + isBookAvailable si viewAvailableBooks" />
+    <MESSAGE value="functia borrowBook pt Client testata" />
+    <option name="LAST_COMMIT_MESSAGE" value="functia borrowBook pt Client testata" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Client.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
