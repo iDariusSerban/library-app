@@ -12,11 +12,18 @@ public class Main {
             if (client1.isBookAvailable("13579")) {
                 System.out.println("Cartea este disponibila");
             }
+            client1.borrowBook("13579");
+            client1.borrowBook("13579");
+            client1.borrowBook("65872");
+            client1.borrowBook("65872");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         client1.viewAvailableBooks();
         System.out.println(" ");
+
         admin.listAllBooks();
+
+
     }
 }

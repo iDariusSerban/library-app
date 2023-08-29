@@ -2,10 +2,13 @@ public class Client extends User {
 
     private String[] borrowedBookCodes;
 
+    int numberOfBorrowedBooks;
+
 
     public Client(String name, Library library) {
         super(name, library);
         this.borrowedBookCodes = new String[10];
+        this.numberOfBorrowedBooks = 0;
     }
 
     public String[] getBorrowedBookCodes() {
@@ -30,7 +33,7 @@ public class Client extends User {
         Book[] books = getLibrary().getBooks();
         for (int i = 0; i < books.length; i++) {
             int availableCopies = books[i].getTotalNumberOfCopies() - books[i].getBorrowedNumberOfCopies();
-            if (availableCopies>0)
+            if (availableCopies > 0)
                 System.out.println("Cartea " + books[i].getTitle() +
                         " Scrisa de " + books[i].getAuthor() +
                         " ISBNCode " + books[i].getISBNCode() +
@@ -38,9 +41,18 @@ public class Client extends User {
         }
     }
 
-    public boolean borrowBook(String ISBNCode) {
-        return true;
+    public boolean borrowBook(String ISBNCode) throws Exception {
+        if (isBookAvailable(ISBNCode) && numberOfBorrowedBooks < 10) {
+            getBorrowedBookCodes()[numberOfBorrowedBooks++] = ISBNCode;
+            Book book = getLibrary().searchForBook(ISBNCode);
+            book.setBorrowedNumberOfCopies(book.getBorrowedNumberOfCopies() + 1);
+            return true;
+        }
+        throw new Exception("Nu mai sunt exemplare de imprumutat");
     }
 
+    public boolean returnBook(String ISBNCode) {
+        return false;
+    }
 
 }
