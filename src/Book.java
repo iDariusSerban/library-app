@@ -6,12 +6,10 @@ public class Book {
     private int totalNumberOfCopies;
     private int borrowedNumberOfCopies;
 
-    public Book(String title, String author, String ISBNCode, int totalNumberOfCopies, int borrowedNumberOfCopies) {
+    public Book(String title, String author, String ISBNCode) {
         this.title = title;
         this.author = author;
         this.ISBNCode = ISBNCode;
-        this.totalNumberOfCopies = totalNumberOfCopies;
-        this.borrowedNumberOfCopies = borrowedNumberOfCopies;
     }
 
     public String getTitle() {

@@ -19,24 +19,30 @@ public class Client extends User {
         this.borrowedBookCodes = borrowedBookCodes;
     }
 
+    public int getNumberOfBorrowedBooks() {
+        return numberOfBorrowedBooks;
+    }
+
+    public void setNumberOfBorrowedBooks(int numberOfBorrowedBooks) {
+        this.numberOfBorrowedBooks = numberOfBorrowedBooks;
+    }
 
     public boolean isBookAvailable(String ISBNCode) throws Exception {
-        Book book = getLibrary().searchForBook(ISBNCode);
-        if (book.getBorrowedNumberOfCopies() < book.getTotalNumberOfCopies()) {
-
-            return true;
+        Book book = getLibrary().findBook(ISBNCode);
+        if (book==null){
+            throw new Exception("Cartea nu este in lista bibliotecii");
         }
-        return false;
+        return book.getBorrowedNumberOfCopies() < book.getTotalNumberOfCopies();
     }
 
     public void viewAvailableBooks() {
         Book[] books = getLibrary().getBooks();
-        for (int i = 0; i < books.length; i++) {
+        for (int i = 0; i < getLibrary().getNumberOfBooks(); i++) {
             int availableCopies = books[i].getTotalNumberOfCopies() - books[i].getBorrowedNumberOfCopies();
             if (availableCopies > 0)
                 System.out.println("Cartea " + books[i].getTitle() +
                         " Scrisa de " + books[i].getAuthor() +
-                        " ISBNCode " + books[i].getISBNCode() +
+                        " ISBNCode: " + books[i].getISBNCode() +
                         " Numar de exemplare disponibile " + availableCopies);
         }
     }
@@ -44,7 +50,7 @@ public class Client extends User {
     public boolean borrowBook(String ISBNCode) throws Exception {
         if (isBookAvailable(ISBNCode) && numberOfBorrowedBooks < 10) {
             getBorrowedBookCodes()[numberOfBorrowedBooks++] = ISBNCode;
-            Book book = getLibrary().searchForBook(ISBNCode);
+            Book book = getLibrary().findBook(ISBNCode);
             book.setBorrowedNumberOfCopies(book.getBorrowedNumberOfCopies() + 1);
             return true;
         }
@@ -53,8 +59,10 @@ public class Client extends User {
 
     public boolean returnBook(String ISBNCode) throws Exception {
         // varific sa fie cartea din lista bibliotecii
-        Book book = getLibrary().searchForBook(ISBNCode);
-        if (book != null) {
+        Book book = getLibrary().findBook(ISBNCode);
+        if (book == null) {
+            throw new Exception("Aceasta carte nu este in lista bibliotecii");
+        }else{
             //sterg codul din lista clientului
             for (int i = 0; i < numberOfBorrowedBooks; i++) {
                 if (ISBNCode.equals(borrowedBookCodes[i])) {
@@ -62,18 +70,22 @@ public class Client extends User {
                         for (int k = i; k < numberOfBorrowedBooks - 1; k++) {
                             borrowedBookCodes[k] = borrowedBookCodes[k + 1];
                         }
-                        numberOfBorrowedBooks--;
                     } else {
                         borrowedBookCodes[i] = null;
-                        numberOfBorrowedBooks--;
                     }
+                    numberOfBorrowedBooks--;
                 }
 
             }
         }
         //scad numarul de copii imprumutate ale carti din lista librariei
-        book.setBorrowedNumberOfCopies(book.getBorrowedNumberOfCopies() - 1);
-        return true;
+        if (book.getBorrowedNumberOfCopies() < 1) {
+            throw new Exception("Au fost returnate toate exemplarele acestei carti");
+        } else {
+            book.setBorrowedNumberOfCopies(book.getBorrowedNumberOfCopies() - 1);
+            // aici e posibil sa treaca de capatul din stanga in cazul in care se face retur la mai multe carti decat sunt in total
+            return true;
+        }
     }
 
 

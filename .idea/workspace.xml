@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c0ebd208-3f6b-49e5-8c2b-bdaf2839e467" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Library.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Library.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1693244767332</updated>
-      <workItem from="1693244768489" duration="14331000" />
+      <workItem from="1693244768489" duration="28454000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -81,7 +84,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693301388823</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="functia returnBook pt Client testata">
+      <option name="closed" value="true" />
+      <created>1693338937732</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1693338937732</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,15 +102,16 @@
     <MESSAGE value="First commit" />
     <MESSAGE value="Am pus atributele si metodele da baza in toate clasele + isBookAvailable si viewAvailableBooks" />
     <MESSAGE value="functia borrowBook pt Client testata" />
-    <option name="LAST_COMMIT_MESSAGE" value="functia borrowBook pt Client testata" />
+    <MESSAGE value="functia returnBook pt Client testata" />
+    <option name="LAST_COMMIT_MESSAGE" value="functia returnBook pt Client testata" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Client.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="5" />
+          <line>61</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
