@@ -11,13 +11,11 @@ public class Admin extends User {
     }
 
     public void deleteBook(String ISBNCode, int numberOfCopies) {
-        getLibrary().deleteBook(ISBNCode, numberOfCopies);
-
         Book book = getLibrary().findBook(ISBNCode);
         if (book.getTotalNumberOfCopies() < 1) {
             System.out.println("Nu mai sunt copii ale acestei carti inregistrate in sistem");
         }
-        book.setTotalNumberOfCopies(book.getTotalNumberOfCopies() - 1);
+        getLibrary().deleteBook(ISBNCode, numberOfCopies);
     }
 
     public boolean addBook(Book newBook) throws Exception {

@@ -66,27 +66,21 @@ public class Library {
             } else {
                 for (int i = bookIndex; i < numberOfBooks - 1; i++) {
                     books[bookIndex] = books[bookIndex + 1];
-                    books[numberOfBooks - 1] = null;
                 }
+                books[numberOfBooks - 1] = null;
+
             }
             numberOfBooks--;
-
-//            for (int i = 0; i < numberOfBooks; i++) {
-//                if (ISBNCode.equals(books[i].getISBNCode())) {
-//                    for (int j = 0; j < numberOfBooks - 1; j++) {
-//                        books[j] = books[j + 1];
-//                    }
-//                    books[numberOfBooks--] = null;
-//                }
-//            }
         }
     }
 
     public boolean deleteBook(String ISBNCode, int copiesToDelete) {
         if (isBookInList(ISBNCode)) {
             int index = findIndexOfBook(ISBNCode);
-            books[index].setBorrowedNumberOfCopies(books[index].getBorrowedNumberOfCopies()-copiesToDelete);
-            return true;
+            if (books[index].getTotalNumberOfCopies() > copiesToDelete) {
+                books[index].setTotalNumberOfCopies(books[index].getTotalNumberOfCopies() - copiesToDelete);
+                return true;
+            }
         }
         return false;
     }

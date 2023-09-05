@@ -20,7 +20,8 @@ public class Main {
             admin.addBook(book3);
             admin.addBook(book3);
             admin.addBook(book3);
-
+            admin.listAllBooks();
+            System.out.println(" ");
 
             if (client1.isBookAvailable("13579")) {
                 System.out.println("Cartea este disponibila pentru imprumut");
